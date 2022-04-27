@@ -1,0 +1,10 @@
+#!/bin/sh
+
+#shellcheck shell=bash
+
+if [ "$1" != "" ]
+then
+    exec "$@"
+fi
+
+exec caddy run -config /Caddyfile

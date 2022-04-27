@@ -1,0 +1,18 @@
+on:
+  schedule:
+    - cron: '33 2 * * *'
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout self
+        uses: actions/checkout@v2
+      - name: build
+        shell: bash
+        run: |
+          docker build . -t dixyes/caddy-l4:latest
+          docker login -u ${{secrets.DOCKERHUB_USERNAME}} -p ${{secrets.DOCKERHUB_TOKEN}}
+          docker push dixyes/caddy-l4:latest
