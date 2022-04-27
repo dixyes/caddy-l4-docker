@@ -7,7 +7,10 @@ RUN \
 
 # build caddy
 RUN \
-    xcaddy build --with github.com/mholt/caddy-l4 && \
+    xcaddy build \
+        --with github.com/mholt/caddy-l4 \
+        --with github.com/abiosoft/caddy-yaml \
+        && \
     rm -rf /tmp/*
 
 # make buildroot

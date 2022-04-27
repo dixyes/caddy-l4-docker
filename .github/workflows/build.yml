@@ -14,5 +14,6 @@ jobs:
         shell: bash
         run: |
           docker build . -t dixyes/caddy-l4:latest
+          docker tag dixyes/caddy-l4:latest "dixyes/caddy-l4:$(date +"%Y%m%d")"
           docker login -u ${{secrets.DOCKERHUB_USERNAME}} -p ${{secrets.DOCKERHUB_TOKEN}}
-          docker push dixyes/caddy-l4:latest
+          docker push dixyes/caddy-l4 --all
